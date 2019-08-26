@@ -24,13 +24,13 @@ To use the script, download it, make it executable and run
     
 To use it with Tor, run
 
-     ./secure-time-sync.sh --use-tor
+    ./secure-time-sync.sh --use-tor
      
 This will configure curl to use localhost on port 9050 as a socks proxy. Port 9050 is the default Tor SocksPort.
 
 Debugging information (the selected website and extracted time) can be gotten by starting the script with the DEBUG_TS=1 environment variable.
 
-     DEBUG_TS=1 ./secure-time-sync.sh
+    DEBUG_TS=1 ./secure-time-sync.sh
      
 The script needs to be run as root so it can set the time.
 
