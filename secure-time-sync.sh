@@ -35,7 +35,7 @@ done
 select_pool() {
   # Use the onion service if the "--use-tor" flag was set.
   if [ "${use_tor}" = "true" ]; then
-    POOL[1]="http://expyuzz4wqqyqhjn.onion"
+    POOL[1]="http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion"
   else
     POOL[1]="https://www.torproject.org"
   fi
@@ -52,16 +52,23 @@ select_pool() {
 
   # DuckDuckGo.
   if [ "${use_tor}" = "true" ]; then
-    POOL[4]="https://3g2upl4pq6kufc4m.onion"
+    POOL[4]="https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion"
   else
     POOL[4]="https://duckduckgo.com"
   fi
 
+  # SecureDrop.
+  if [ "${use_tor}" = "true" ]; then
+    POOL[5]="http://sdolvtfhatvsysc6l34d65ymdwxcujausv7k5jk4cy5ttzhjoi6fzvyd.onion"
+  else
+    POOL[5]="https://securedrop.org"
+  fi
+
   # EFF.
-  POOL[5]="https://www.eff.org"
+  POOL[6]="https://www.eff.org"
 
   # The last one doesn't get selected. Without the following line, POOL[5] would never be selected.
-  POOL[6]=""
+  POOL[7]=""
 
   rand=$[$RANDOM % ${#POOL[@]}]
   SELECTED_POOL="${POOL[$rand]}"
@@ -83,7 +90,7 @@ else
 fi
 
 if ! ${SECURE_CURL} -s ${SELECTED_POOL} &>/dev/null; then
-  echo "ERROR: Could not connect to the website."
+  echo "ERROR: Could not connect to the website ${SELECTED_POOL}."
   exit 1
 fi
 
