@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-profile secure-time-sync /{,usr/}bin/secure-time-sync flags=(attach_disconnected) {
+profile secure-time-sync /usr/{,local/}bin/secure-time-sync flags=(attach_disconnected) {
   #include <abstractions/base>
   #include <abstractions/bash>
 
@@ -16,6 +16,7 @@ profile secure-time-sync /{,usr/}bin/secure-time-sync flags=(attach_disconnected
   owner /etc/nsswitch.conf r,
   owner /etc/passwd r,
   owner /etc/resolv.conf r,
+  owner /etc/gai.conf r,
 
   /usr/bin/bash ix,
   /usr/bin/curl mrix,
@@ -23,5 +24,5 @@ profile secure-time-sync /{,usr/}bin/secure-time-sync flags=(attach_disconnected
   /usr/bin/grep mrix,
   /usr/bin/id mrix,
   /usr/bin/sed mrix,
-  /{,usr/}bin/secure-time-sync r,
+  /usr/{,local/}bin/secure-time-sync r,
 }
