@@ -10,7 +10,7 @@ Wants=network-online.target time-set.target
 [Service]
 AmbientCapabilities=CAP_SYS_TIME
 CapabilityBoundingSet=CAP_SYS_TIME
-#ExecStartPre=sh -c 'while ! getent hosts eff.org; do sleep 1; done'
+ExecStartPre=/usr/bin/env sh -c "while ! getent hosts torproject.org >/dev/null ; do sleep 1 ; done"
 ExecStart=!!/usr/bin/secure-time-sync
 Type=notify
 Restart=always
