@@ -6,6 +6,10 @@ profile secure-time-sync /usr/{,local/}bin/secure-time-sync flags=(attach_discon
 
   capability sys_time,
 
+  network raw,
+  network inet,
+  network inet6,
+
   owner /dev/tty rw,
 
   owner /etc/ca-certificates/** r,
